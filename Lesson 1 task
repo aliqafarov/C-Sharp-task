@@ -1,0 +1,119 @@
+
+
+using System;
+
+namespace ConsoleApp3
+{
+    // Task 1
+    class Word
+    {
+        public string _arr { get; set; }
+
+        public Word(string arr)
+        {
+            _arr = arr;
+        }
+        public int CountOfSpace()
+        {
+            int countNum = 0;
+
+            for (int i = 0; i < _arr.Length; i++)
+            {
+                if (_arr[i] == ' ') countNum++;
+            }
+            return countNum;
+        }
+    }
+    // Task 2
+    class Ticket
+    {
+        public int number { get; set; }
+
+        public bool Test()
+
+        {
+            int sum1 = 0;
+            int sum2 = 0;
+            int temp = number;
+            for (int i = 0; i < 6; i++)
+            {
+                if (i < 3)
+                {
+                    sum1 += temp % 10;
+                    temp /= 10;
+                }
+                else
+                {
+                    sum2 += temp % 10;
+                    temp /= 10;
+                }
+            }
+            return sum1.Equals(sum2);
+        }
+    }
+
+    class Digits
+    {
+        private int a;
+        private int b;
+
+        public Digits(int num1, int num2)
+        {
+            a = num1;
+            b = num2;
+        }
+        public void Print()
+        {
+            int num = a;
+            while (num <= b)
+            {
+                for (int i = 0; i < num; i++)
+                {
+                    Console.WriteLine(num);
+                }
+                num++;
+            }
+
+        }
+    }
+
+    class Digit
+    {
+        private int a;
+
+        public Digit(int num1)
+        {
+            a = num1;
+        }
+        public void Reverse()
+        {
+            int num = a;
+            a = 0;
+            while (num != 0)
+            {
+                a *= 10;
+                a += num % 10;
+                num /= 10;
+            }
+            Console.WriteLine(a);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Word obj = new Word("Hello World");
+            Console.WriteLine(obj.CountOfSpace());
+            Ticket obj2 = new Ticket();
+            obj2.number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(obj2.Test());
+            Digits obj3 = new Digits(3, 8);
+            obj3.Print();
+            Digit obj4 = new Digit(385);
+            obj4.Reverse();
+        }
+    }
+}
+
+
